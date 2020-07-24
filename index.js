@@ -15,7 +15,10 @@ const getAuthed = (code) => {
       ).toString('base64')}`,
     },
   })
-    .then((r) => r.json())
+    .then((r) => {
+      if (r.ok) return r.json();
+      throw r;
+    })
     .catch((err) => console.error('error in getAuthed', err));
 };
 
