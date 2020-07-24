@@ -14,7 +14,9 @@ const getAuthed = (code) => {
         process.env.clientID + ':' + process.env.clientSecret
       ).toString('base64')}`,
     },
-  }).then((r) => r.json());
+  })
+    .then((r) => r.json())
+    .catch((err) => console.error('error in getAuthed', err));
 };
 
 // there's a limit of requesting a 1 month range for recordings
@@ -34,16 +36,19 @@ const getRecordings = (month, token) => {
 
 // hook up oauth
 app.get('/zoom', async (req, res) => {
+  console.log('/zoom request');
   // Step 1:
   // Check if the code parameter is in the url
   // if an authorization code is available, the user has most likely been redirected from Zoom OAuth
   // if not, the user needs to be redirected to Zoom OAuth to authorize
   if (req.query.code) {
+    console.log('got a code');
     // Step 3:
     // Request an access token using the auth code
     const authBody = await getAuthed(req.query.code);
 
     if (authBody.access_token) {
+      console.log('got a token');
       let meetings = [];
       let month = 3; // TODO: use state (from OAuth) in queryString to set month range
       let endMonth = 7;
