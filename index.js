@@ -38,7 +38,6 @@ app.get('/zoom', async (req, res) => {
   // Check if the code parameter is in the url
   // if an authorization code is available, the user has most likely been redirected from Zoom OAuth
   // if not, the user needs to be redirected to Zoom OAuth to authorize
-  console.log('startMonth', req.query.startMonth);
   if (req.query.code) {
     // Step 3:
     // Request an access token using the auth code
@@ -46,7 +45,7 @@ app.get('/zoom', async (req, res) => {
 
     if (authBody.access_token) {
       let meetings = [];
-      let month = 3; // TODO: use queryString to set month range
+      let month = 3; // TODO: use state (from OAuth) in queryString to set month range
       let endMonth = 7;
       // Step 4:
       // We can now use the access token to authenticate API calls
