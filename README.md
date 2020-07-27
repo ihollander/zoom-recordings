@@ -1,6 +1,6 @@
-# Zoom OAuth Hello World
+# Zoom OAuth Recordings
 
-This is a Hello World app using an OAuth Marketplace App client ID and Secret to create an OAuth token, used to call the Zoom API. 
+Starter code taken from https://github.com/zoom/zoom-oauth-sample-app
 
 Follow allong with relevant Zoom OAuth documentation as we set this up: 
 
@@ -12,11 +12,11 @@ Follow allong with relevant Zoom OAuth documentation as we set this up:
 Clone and install the app and it's dependencies. We'll be using [Express](https://www.npmjs.com/package/express) for a basic Node.js server, [dotenv](https://www.npmjs.com/package/dotenv) for our credentials, [requests](https://www.npmjs.com/package/requests) to make HTTP requests and [nodemon](https://www.npmjs.com/package/nodemon) for easier development refreshing. 
 
 ```bash
-git clone https://github.com/zoom/zoom-oauth-sample-app.git
+git clone https://github.com/ihollander/zoom-recordings.git
 ```
 
 ```bash
-cd zoom-oauth-sample-app && npm install 
+cd zoom-recordings && npm install 
 ```
 
 Run server:
